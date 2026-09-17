@@ -9,3 +9,6 @@ assume we are making a cart related project
 3. user can remove item from cart
 4. user can also update quantity of product
 5. all the items should be stored after temination of project
+
+server can send tothe client 
+

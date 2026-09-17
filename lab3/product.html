@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Wireless Mouse</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f3f4f6;
+            color: #222;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background-color: #111827;
+            color: white;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav h1 {
+            font-size: 28px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            font-size: 16px;
+        }
+
+        nav a:hover {
+            color: #f59e0b;
+        }
+
+        /* Product Container */
+        .product-container {
+            max-width: 1100px;
+            margin: 50px auto;
+            background-color: white;
+            padding: 40px;
+            border-radius: 15px;
+
+            display: flex;
+            gap: 60px;
+
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Product Image */
+        .image-section {
+            width: 50%;
+            text-align: center;
+        }
+
+        .mouse-image {
+            height: 350px;
+            background-color: #eeeeee;
+            border-radius: 15px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-size: 150px;
+        }
+
+        /* Product Details */
+        .details {
+            width: 50%;
+        }
+
+        .details h2 {
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+        .rating {
+            color: #f59e0b;
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .description {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .price {
+            font-size: 32px;
+            font-weight: bold;
+            color: #16a34a;
+        }
+
+        .old-price {
+            text-decoration: line-through;
+            color: #888;
+            margin-top: 5px;
+        }
+
+        /* Features */
+        .features {
+            margin: 25px 0;
+        }
+
+        .features li {
+            list-style: none;
+            margin: 12px 0;
+        }
+
+        .features li::before {
+            content: "✓";
+            color: green;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        /* Buttons */
+        button {
+            padding: 14px 25px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        .cart-btn {
+            background-color: #f59e0b;
+            color: white;
+        }
+
+        .buy-btn {
+            background-color: #2563eb;
+            color: white;
+        }
+
+        button:hover {
+            opacity: 0.85;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #111827;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .product-container {
+                flex-direction: column;
+                margin: 20px;
+                padding: 25px;
+            }
+
+            .image-section,
+            .details {
+                width: 100%;
+            }
+
+            .mouse-image {
+                height: 280px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <h1>TechStore</h1>
+
+        <div>
+            <a href="#">Home</a>
+            <a href="#">Products</a>
+            <a href="#">Contact</a>
+        </div>
+    </nav>
+
+
+    <!-- Product Section -->
+    <div class="product-container">
+
+        <!-- Mouse Image -->
+        <div class="image-section">
+
+            <div class="mouse-image">
+                🖱️
+            </div>
+
+        </div>
+
+
+        <!-- Product Details -->
+        <div class="details">
+
+            <h2>Wireless Mouse</h2>
+
+            <div class="rating">
+                ★★★★★
+                <span style="color: #555;">4.8/5</span>
+            </div>
+
+            <p class="description">
+                Experience smooth and comfortable computing with our
+                wireless optical mouse. It is perfect for students,
+                office work, browsing and everyday use.
+            </p>
+
+            <div class="price">
+                ₹799
+            </div>
+
+            <div class="old-price">
+                ₹1,299
+            </div>
+
+
+            <!-- Features -->
+            <ul class="features">
+
+                <li>2.4 GHz Wireless Connection</li>
+
+                <li>High Precision Optical Sensor</li>
+
+                <li>Ergonomic Design</li>
+
+                <li>Long Battery Life</li>
+
+                <li>Compatible with Windows and Mac</li>
+
+            </ul>
+
+
+            <!-- Buttons -->
+            <button class="cart-btn" onclick="addToCart()">
+                Add to Cart
+            </button>
+
+            <button class="buy-btn" onclick="buyNow()">
+                Buy Now
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 TechStore | All Rights Reserved</p>
+    </footer>
+
+
+    <!-- JavaScript -->
+    <script>
+
+        function addToCart() {
+            alert("Mouse added to cart!");
+        }
+
+        function buyNow() {
+            alert("Proceeding to checkout...");
+        }
+
+    </script>
+    
+
+</body>
+</html>
