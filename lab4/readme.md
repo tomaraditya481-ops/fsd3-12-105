@@ -31,3 +31,6 @@ script{
   postman, thunder client, echo
   api etc
 
+get: /api/products
+get: /api/produces/101
+post
