@@ -1,54 +1,51 @@
-import http from "http";
-import {
-  addUser,
-  getAllUsers,
-  getUserById,
-  updateUser,
-  deleteUser,
-} from "./users.js";
+// we use in memory database
+let users = [
+  {
+    id: 1,
+    name: "Amit Sharma",
+    mob: "98345xxxxx",
+    email: "amit.example@exam.com",
+  },
+  {
+    id: 2,
+    name: "Monika Verma",
+    mob: "92345xxxxx",
+    email: "moni.example@exam.com",
+  },
+];
 
-const server = http.createServer((req, res) => {
-  if (req.url === "/api/users" && req.method === "GET") {
-    res.end(JSON.stringify(getAllUsers()));
-  } else if (req.url === "/api/users" && req.method === "POST") {
-    let body = "";
-    req.on("data", (chunk) => {
-      body += chunk;
-    });
-    req.on("end", () => {
-      const user = JSON.parse(body);
-      const userCreated = addUser(user);
-      res.end(JSON.stringify({ msg: "user added", userCreated }));
-    });
-  } else if (req.url.startsWith("/api/users/") && req.method === "GET") {
-    const userId = Number(req.url.split("/").pop());
-    const userFound = getUserById(userId);
-    if (!userFound) {
-      res.end(JSON.stringify({ msg: "User not found" }));
-    } else res.end(JSON.stringify(userFound));
-  } else if (req.url.startsWith("/api/users/") && req.method === "PUT") {
-    const userId = Number(req.url.split("/").pop());
-    let body = "";
-    req.on("data", (chunk) => {
-      body += chunk;
-    });
-    req.on("end", () => {
-      const user = JSON.parse(body);
-      const userUpdated = udpateUser(userId, user);
-      if (!userUpdated) {
-        res.end(JSON.stringify({ msg: "User not found" }));
-      } else res.end(JSON.stringify(userUpdated));
-    });
-  } else if (req.url.startsWith("/api/users/") && req.method === "DELETE") {
-    const userId = Number(req.url.split("/").pop());
-    const isDeleted = deleteUser(userId);
-    if (!isDeleted) {
-      res.end(JSON.stringify({ msg: "User not found" }));
-    } else res.end(JSON.stringify({ msg: "user deleted" }));
-  } else {
-    res.statusCode = 404;
-    res.end();
+let nextId = 3;
+
+
+export const getAllUsers = () => {
+  return users;
+}
+
+export const getUserById = (pid) =>{
+  const found = users.find((user)=> user.id === pid)
+  return found;
+}
+
+export const addUser = (user) => {
+  user.id = nextId++;
+  users.push(user);
+  return user;
+};
+
+export const udpateUser = (pid,updateData)=>{
+  const index = users.findIndex((user)=> user.id === pid);
+  if(index == -1){
+    return false;
   }
-});
+  updateData.id = pid;
+  users[index] =updateData;
+  return updateData;
+}
 
-server.listen(3000, () => console.log("prg7 is running"));
+export const deleteUser = (pid)=>{
+  const index = users.findIndex((user) => user.id === pid);
+  if (index == -1) {
+    return false;
+  }
+  users.splice(index,1);
+}
