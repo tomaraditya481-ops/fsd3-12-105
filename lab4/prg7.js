@@ -1,4 +1,5 @@
 import http from "http";
+import {addUsers,getAllUsera,getUserById}
 
 const server = http.createServer((req, res) => {
   if (req.url === "/api/users" && req.method === "GET") {
